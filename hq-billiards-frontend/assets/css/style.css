@@ -1,0 +1,65 @@
+/* HQ Billiards - base tokens + shared components (extended in later modules) */
+:root{
+  --bg:#080808; --card:#161616; --card-2:#1f1f1f; --line:#2c2c2c;
+  --gold:#d4a626; --gold-soft:#f0c75a; --text:#f4f1e8; --muted:#a39e90;
+  --ok:#3fb67a; --warn:#e8a33d; --bad:#e5594f;
+  --radius:10px;
+  --font-display:"Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  --font-body:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 var(--font-body)}
+a{color:var(--gold-soft)}
+:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.2;margin:0 0 .5em}
+
+.btn{display:inline-block;border:1px solid var(--gold);background:var(--gold);color:#111;
+  padding:.7rem 1.2rem;border-radius:8px;font:600 .95rem var(--font-body);cursor:pointer;text-decoration:none;
+  transition:background .15s,transform .15s}
+.btn:hover{background:var(--gold-soft)}
+.btn:active{transform:translateY(1px)}
+.btn-ghost{background:transparent;color:var(--gold-soft)}
+.btn-ghost:hover{background:rgba(212,166,38,.12)}
+.btn-block{display:block;width:100%;text-align:center}
+
+label{display:block;margin:0 0 .35rem;font-size:.9rem;color:var(--muted)}
+input,select,textarea{width:100%;background:var(--card-2);border:1px solid var(--line);color:var(--text);
+  padding:.7rem .8rem;border-radius:8px;font:inherit}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);outline:none}
+.field{margin-bottom:1rem}
+.hint{font-size:.8rem;color:var(--muted);margin-top:.3rem}
+
+.alert{padding:.75rem 1rem;border-radius:8px;margin-bottom:1rem;border:1px solid;font-size:.92rem}
+.alert-error{background:rgba(229,89,79,.12);border-color:var(--bad);color:#ffb3ad}
+.alert-success{background:rgba(63,182,122,.12);border-color:var(--ok);color:#a7ecc9}
+.alert-info{background:rgba(212,166,38,.12);border-color:var(--gold);color:var(--gold-soft)}
+
+.badge{display:inline-block;padding:.15rem .6rem;border-radius:99px;font-size:.78rem;font-weight:600}
+.badge-available,.badge-approved,.badge-confirmed,.badge-completed{background:rgba(63,182,122,.15);color:var(--ok)}
+.badge-occupied,.badge-active,.badge-preparing{background:rgba(229,89,79,.15);color:var(--bad)}
+.badge-reserved,.badge-pending,.badge-ready{background:rgba(232,163,61,.15);color:var(--warn)}
+.badge-maintenance,.badge-cancelled,.badge-rejected{background:rgba(163,158,144,.15);color:var(--muted)}
+
+/* ---- Auth pages ---- */
+.auth{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.auth-brand{background:
+  radial-gradient(circle at 30% 20%,rgba(212,166,38,.18),transparent 55%),#0c0c0c;
+  border-right:1px solid var(--line);padding:3rem;display:flex;flex-direction:column;justify-content:space-between}
+.auth-brand .mark{font:700 2.4rem var(--font-display);color:var(--gold)}
+.auth-brand p{max-width:30ch;color:var(--muted);font-size:1.05rem}
+.auth-brand h2{font-size:2.2rem;max-width:14ch}
+.auth-panel{display:flex;align-items:center;justify-content:center;padding:2rem}
+.auth-form{width:100%;max-width:400px}
+.auth-form h1{font-size:1.8rem}
+.auth-form .sub{color:var(--muted);margin-bottom:1.5rem}
+.auth-links{display:flex;justify-content:space-between;margin-top:1rem;font-size:.9rem}
+@media(max-width:800px){
+  .auth{grid-template-columns:1fr}
+  .auth-brand{padding:1.5rem;border-right:0;border-bottom:1px solid var(--line)}
+  .auth-brand h2,.auth-brand p{display:none}
+}
+
+/* ---- Temporary dashboard stub (replaced in later modules) ---- */
+.stub{max-width:640px;margin:12vh auto;padding:2rem;background:var(--card);border:1px solid var(--line);border-radius:var(--radius)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

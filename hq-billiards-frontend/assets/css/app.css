@@ -1,0 +1,63 @@
+/* Signed-in app layout (customer / staff / admin). Uses tokens from style.css */
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+.side{background:#0c0c0c;border-right:1px solid var(--line);padding:1.2rem 0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+.side .brand{font:700 1.35rem var(--font-display);color:var(--gold);padding:0 1.3rem 1rem;text-decoration:none;display:block}
+.side .group{padding:.9rem 1.3rem .3rem;color:var(--muted);font-size:.78rem}
+.side a.nav-link{display:flex;justify-content:space-between;align-items:center;padding:.55rem 1.3rem;color:var(--text);text-decoration:none;font-size:.95rem;border-left:3px solid transparent}
+.side a.nav-link:hover{background:rgba(212,166,38,.08)}
+.side a.nav-link.active{border-left-color:var(--gold);background:rgba(212,166,38,.14);color:var(--gold-soft)}
+.side .count{background:var(--gold);color:#111;border-radius:99px;font-size:.72rem;font-weight:700;padding:.05rem .5rem}
+.side .who{margin-top:auto;padding:1rem 1.3rem 0;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.side .who b{display:block;color:var(--text)}
+.main{padding:2rem clamp(1rem,3vw,2.5rem);min-width:0}
+.topbar{display:none}
+.page-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem}
+.page-head h1{margin:0;font-size:1.8rem}.page-head p{margin:.2rem 0 0;color:var(--muted)}
+
+.grid{display:grid;gap:1rem}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem}
+.panel h2{font-size:1.05rem;margin-bottom:.8rem;color:var(--muted);font-family:var(--font-body);font-weight:600}
+.big{font:700 2.4rem/1.1 var(--font-display);color:var(--gold-soft)}
+.panel .meta{color:var(--muted);font-size:.9rem;margin:.3rem 0 .9rem}
+.timer{font:700 2.2rem/1 ui-monospace,Consolas,monospace;letter-spacing:.02em}
+.live{display:inline-block;width:.6rem;height:.6rem;border-radius:50%;background:var(--bad);margin-right:.4rem;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.3}}
+.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.empty{color:var(--muted);padding:.6rem 0}
+.list-row{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-top:1px solid var(--line);font-size:.93rem}
+.list-row small{display:block;color:var(--muted)}
+.plus{color:var(--ok)}.minus{color:var(--bad)}
+
+@media(max-width:860px){
+  .app{grid-template-columns:1fr}
+  .side{position:fixed;left:0;top:0;bottom:0;width:260px;z-index:60;transform:translateX(-100%);transition:transform .2s}
+  .side.open{transform:none}
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;background:#0c0c0c;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+  .topbar button{background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:.35rem .7rem;font-size:1.1rem}
+}
+@media(prefers-reduced-motion:reduce){.live{animation:none}}
+
+/* ---- Tables & reservations ---- */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem}
+.tcard{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--line);border-radius:var(--radius);padding:1.1rem}
+.tcard.s-available{border-top-color:var(--ok)}.tcard.s-occupied{border-top-color:var(--bad)}
+.tcard.s-reserved{border-top-color:var(--warn)}
+.tcard h3{display:flex;justify-content:space-between;align-items:center;font-size:1.1rem}
+.tcard .rate{color:var(--gold-soft);font-weight:600;margin:.3rem 0 .6rem}
+.tcard .info{color:var(--muted);font-size:.9rem;min-height:2.6em}
+.tcard .btn{margin-top:.6rem}
+.form-panel{max-width:560px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.estimate{background:var(--card-2);border:1px dashed var(--gold);border-radius:8px;padding:.8rem 1rem;margin-bottom:1rem}
+.estimate b{color:var(--gold-soft);font-size:1.3rem}
+table.data{width:100%;border-collapse:collapse;font-size:.93rem}
+table.data th{text-align:left;color:var(--muted);font-weight:600;padding:.6rem;border-bottom:1px solid var(--line)}
+table.data td{padding:.7rem .6rem;border-bottom:1px solid var(--line);vertical-align:middle}
+.table-wrap{overflow-x:auto}
+.inline{display:inline}
+.btn-sm{padding:.35rem .75rem;font-size:.82rem}
+.btn-danger{background:transparent;border-color:var(--bad);color:var(--bad)}
+.btn-danger:hover{background:rgba(229,89,79,.12)}
+@media(max-width:560px){.row2{grid-template-columns:1fr}}

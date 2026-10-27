@@ -1,0 +1,79 @@
+/* HQ Billiards public landing page. Builds on style.css tokens. */
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+section{padding:5rem 0}
+
+/* Image slots: real photo on top, dark felt-toned gradient underneath as fallback
+   so the page looks right even before you add your own images. */
+.img{background:var(--img,none) center/cover no-repeat,
+  linear-gradient(135deg,#1a1a17,#0e0e0c 60%,#2a2411);}
+
+/* Nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(8,8,8,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:700 1.4rem var(--font-display);color:var(--gold);text-decoration:none}
+.nav ul{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0;align-items:center}
+.nav ul a{color:var(--text);text-decoration:none;font-size:.95rem}
+.nav ul a:hover{color:var(--gold-soft)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:.4rem .7rem;font-size:1.1rem;cursor:pointer}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 0 4rem;position:relative}
+.hero::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(8,8,8,.95) 15%,rgba(8,8,8,.55)),var(--img,none) center/cover,
+  linear-gradient(135deg,#1a1a17,#0e0e0c 60%,#2a2411)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);max-width:12ch}
+.hero p.lead{color:#d6d1c2;max-width:46ch;font-size:1.1rem;margin-bottom:2rem}
+.hero .actions{display:flex;gap:.8rem;flex-wrap:wrap}
+.board{background:rgba(22,22,22,.92);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem}
+.board h3{font-size:1.1rem;display:flex;justify-content:space-between;align-items:center}
+.board .row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-top:1px solid var(--line);font-size:.95rem}
+.board .row small{color:var(--muted)}
+
+/* Services */
+.section-head{max-width:560px;margin-bottom:2.5rem}
+.section-head p{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem}
+.card h3{font-size:1.15rem;color:var(--gold-soft)}
+.card p{color:var(--muted);margin:0;font-size:.95rem}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.about .img{aspect-ratio:4/3;border-radius:var(--radius);border:1px solid var(--line)}
+.about p{color:#cfcabb}
+
+/* Menu */
+.menu-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.menu-col h3{border-bottom:1px solid var(--gold);padding-bottom:.4rem;font-size:1.1rem;text-transform:capitalize}
+.menu-item{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px dashed var(--line)}
+.menu-item small{display:block;color:var(--muted)}
+.menu-item b{color:var(--gold-soft);white-space:nowrap}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.gallery .img{aspect-ratio:1;border-radius:var(--radius);border:1px solid var(--line);transition:transform .2s}
+.gallery .img:hover{transform:scale(1.02)}
+
+/* How it works (a real sequence, so numbered) */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.4rem}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--gold);color:#111;font-weight:700;margin-bottom:.8rem}
+.steps h3{font-size:1.1rem}.steps p{color:var(--muted);margin:0;font-size:.95rem}
+
+/* Contact + footer */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.contact dl{margin:0}.contact dt{color:var(--gold-soft);margin-top:1rem;font-weight:600}.contact dd{margin:0;color:#cfcabb}
+.map{min-height:260px;border-radius:var(--radius);border:1px solid var(--line);display:grid;place-items:center;color:var(--muted);text-align:center;padding:1rem}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+@media(max-width:860px){
+  .hero .wrap,.about,.contact{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .nav-toggle{display:block}
+  .nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:flex-start;
+    background:#0c0c0c;padding:1rem 4%;border-bottom:1px solid var(--line);gap:1rem}
+  .nav ul.open{display:flex}
+}
